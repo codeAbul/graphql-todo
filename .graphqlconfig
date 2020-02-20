@@ -1,0 +1,16 @@
+{
+  "name": "Untitled GraphQL Schema",
+  "schemaPath": "schema.graphql",
+  "extensions": {
+    "endpoints": {
+      "Default GraphQL Endpoint": {
+        "url":"https://hasura.io/learn/graphql",
+        "headers": {
+          "user-agent": "JS GraphQL",
+          "authorization": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik9FWTJSVGM1UlVOR05qSXhSRUV5TURJNFFUWXdNekZETWtReU1EQXdSVUV4UVVRM05EazFNQSJ9.eyJodHRwczovL2hhc3VyYS5pby9qd3QvY2xhaW1zIjp7IngtaGFzdXJhLWRlZmF1bHQtcm9sZSI6InVzZXIiLCJ4LWhhc3VyYS1hbGxvd2VkLXJvbGVzIjpbInVzZXIiXSwieC1oYXN1cmEtdXNlci1pZCI6ImF1dGgwfDVlNGE2OGZmNzM1OGI1MGU4NzJmNDkzYSJ9LCJuaWNrbmFtZSI6InNha2ExNjQ5MiIsIm5hbWUiOiJzYWthMTY0OTJAZ21haWwuY29tIiwicGljdHVyZSI6Imh0dHBzOi8vcy5ncmF2YXRhci5jb20vYXZhdGFyL2ViMTViZDI5MTZmYWY5MjU3ZGE4N2I0M2I3YzUyNTcyP3M9NDgwJnI9cGcmZD1odHRwcyUzQSUyRiUyRmNkbi5hdXRoMC5jb20lMkZhdmF0YXJzJTJGc2EucG5nIiwidXBkYXRlZF9hdCI6IjIwMjAtMDItMTdUMTA6MjA6NDguMTMyWiIsImVtYWlsIjoic2FrYTE2NDkyQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiaXNzIjoiaHR0cHM6Ly9ncmFwaHFsLXR1dG9yaWFscy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWU0YTY4ZmY3MzU4YjUwZTg3MmY0OTNhIiwiYXVkIjoiUDM4cW5GbzFsRkFRSnJ6a3VuLS13RXpxbGpWTkdjV1ciLCJpYXQiOjE1ODIwMDcwOTYsImV4cCI6MTU4MjA0MzA5Niwibm9uY2UiOiJCTnRkclJwRF9BZHhqRWo2TDdGVXZweFNFck5tdW4xTmRReE82SGJSWXRhIn0.DNgoHBQ7eSShjgu78mBuVqXbLaKrqSuMbCH7S3CuYFFFtn2mzNfpOuw8pLAQrpnCWpEhXmew_NnZnCOp1qWxuaPk2-M2MDWpN1Ea4CGCfNvn-rXyM3y2JtmfsPvoQKaxMjd7Ps0zTTHnchHEE3ux6R39HEMhzd0iNGIeNWb7BGRSx4DrHehgyUCAKkR3I3JUmK_tTh6AR9zzYBzG5x01dg23fvT5sLOo-TVrQh1aSxiMMRR4KQa28jM3rKDh_4ya3Iw5lXLXlpxylFK-Q1iCM4s93aynzYR5e2XjPaMqRWnS0b477kpfnxnAfp41wNTQE1ZRnhn2A33krTJM1tpzMg"
+        },
+        "introspect": false
+      }
+    }
+  }
+}
