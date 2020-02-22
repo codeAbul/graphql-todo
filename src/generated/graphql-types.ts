@@ -559,6 +559,51 @@ export type ClearCompletedMutation = (
   )> }
 );
 
+export type GetOldPublicTodosQueryVariables = {
+  oldestTodoId: Scalars['Int']
+};
+
+
+export type GetOldPublicTodosQuery = (
+  { __typename?: 'query_root' }
+  & { todos: Array<(
+    { __typename?: 'todos' }
+    & Pick<Todos, 'id' | 'title' | 'created_at'>
+    & { user: (
+      { __typename?: 'users' }
+      & Pick<Users, 'name'>
+    ) }
+  )> }
+);
+
+export type GetNewPublicTodosQueryVariables = {
+  latestVisibleId?: Maybe<Scalars['Int']>
+};
+
+
+export type GetNewPublicTodosQuery = (
+  { __typename?: 'query_root' }
+  & { todos: Array<(
+    { __typename?: 'todos' }
+    & Pick<Todos, 'id' | 'title' | 'created_at'>
+    & { user: (
+      { __typename?: 'users' }
+      & Pick<Users, 'name'>
+    ) }
+  )> }
+);
+
+export type NotifyNewPublicTodosSubscriptionVariables = {};
+
+
+export type NotifyNewPublicTodosSubscription = (
+  { __typename?: 'subscription_root' }
+  & { todos: Array<(
+    { __typename?: 'todos' }
+    & Pick<Todos, 'id' | 'created_at'>
+  )> }
+);
+
 
 export const UpdateLastSeenDocument = gql`
     mutation updateLastSeen($now: timestamptz) {
@@ -873,3 +918,141 @@ export function useClearCompletedMutation(baseOptions?: ApolloReactHooks.Mutatio
 export type ClearCompletedMutationHookResult = ReturnType<typeof useClearCompletedMutation>;
 export type ClearCompletedMutationResult = ApolloReactCommon.MutationResult<ClearCompletedMutation>;
 export type ClearCompletedMutationOptions = ApolloReactCommon.BaseMutationOptions<ClearCompletedMutation, ClearCompletedMutationVariables>;
+export const GetOldPublicTodosDocument = gql`
+    query getOldPublicTodos($oldestTodoId: Int!) {
+  todos(where: {is_public: {_eq: true}, id: {_lt: $oldestTodoId}}, limit: 7, order_by: {created_at: desc}) {
+    id
+    title
+    created_at
+    user {
+      name
+    }
+  }
+}
+    `;
+export type GetOldPublicTodosProps<TChildProps = {}> = ApolloReactHoc.DataProps<GetOldPublicTodosQuery, GetOldPublicTodosQueryVariables> & TChildProps;
+export function withGetOldPublicTodos<TProps, TChildProps = {}>(operationOptions?: ApolloReactHoc.OperationOption<
+  TProps,
+  GetOldPublicTodosQuery,
+  GetOldPublicTodosQueryVariables,
+  GetOldPublicTodosProps<TChildProps>>) {
+    return ApolloReactHoc.withQuery<TProps, GetOldPublicTodosQuery, GetOldPublicTodosQueryVariables, GetOldPublicTodosProps<TChildProps>>(GetOldPublicTodosDocument, {
+      alias: 'getOldPublicTodos',
+      ...operationOptions
+    });
+};
+
+/**
+ * __useGetOldPublicTodosQuery__
+ *
+ * To run a query within a React component, call `useGetOldPublicTodosQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetOldPublicTodosQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetOldPublicTodosQuery({
+ *   variables: {
+ *      oldestTodoId: // value for 'oldestTodoId'
+ *   },
+ * });
+ */
+export function useGetOldPublicTodosQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GetOldPublicTodosQuery, GetOldPublicTodosQueryVariables>) {
+        return ApolloReactHooks.useQuery<GetOldPublicTodosQuery, GetOldPublicTodosQueryVariables>(GetOldPublicTodosDocument, baseOptions);
+      }
+export function useGetOldPublicTodosLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetOldPublicTodosQuery, GetOldPublicTodosQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<GetOldPublicTodosQuery, GetOldPublicTodosQueryVariables>(GetOldPublicTodosDocument, baseOptions);
+        }
+export type GetOldPublicTodosQueryHookResult = ReturnType<typeof useGetOldPublicTodosQuery>;
+export type GetOldPublicTodosLazyQueryHookResult = ReturnType<typeof useGetOldPublicTodosLazyQuery>;
+export type GetOldPublicTodosQueryResult = ApolloReactCommon.QueryResult<GetOldPublicTodosQuery, GetOldPublicTodosQueryVariables>;
+export const GetNewPublicTodosDocument = gql`
+    query getNewPublicTodos($latestVisibleId: Int) {
+  todos(where: {is_public: {_eq: true}, id: {_gt: $latestVisibleId}}, order_by: {created_at: desc}) {
+    id
+    title
+    created_at
+    user {
+      name
+    }
+  }
+}
+    `;
+export type GetNewPublicTodosProps<TChildProps = {}> = ApolloReactHoc.DataProps<GetNewPublicTodosQuery, GetNewPublicTodosQueryVariables> & TChildProps;
+export function withGetNewPublicTodos<TProps, TChildProps = {}>(operationOptions?: ApolloReactHoc.OperationOption<
+  TProps,
+  GetNewPublicTodosQuery,
+  GetNewPublicTodosQueryVariables,
+  GetNewPublicTodosProps<TChildProps>>) {
+    return ApolloReactHoc.withQuery<TProps, GetNewPublicTodosQuery, GetNewPublicTodosQueryVariables, GetNewPublicTodosProps<TChildProps>>(GetNewPublicTodosDocument, {
+      alias: 'getNewPublicTodos',
+      ...operationOptions
+    });
+};
+
+/**
+ * __useGetNewPublicTodosQuery__
+ *
+ * To run a query within a React component, call `useGetNewPublicTodosQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetNewPublicTodosQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetNewPublicTodosQuery({
+ *   variables: {
+ *      latestVisibleId: // value for 'latestVisibleId'
+ *   },
+ * });
+ */
+export function useGetNewPublicTodosQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GetNewPublicTodosQuery, GetNewPublicTodosQueryVariables>) {
+        return ApolloReactHooks.useQuery<GetNewPublicTodosQuery, GetNewPublicTodosQueryVariables>(GetNewPublicTodosDocument, baseOptions);
+      }
+export function useGetNewPublicTodosLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetNewPublicTodosQuery, GetNewPublicTodosQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<GetNewPublicTodosQuery, GetNewPublicTodosQueryVariables>(GetNewPublicTodosDocument, baseOptions);
+        }
+export type GetNewPublicTodosQueryHookResult = ReturnType<typeof useGetNewPublicTodosQuery>;
+export type GetNewPublicTodosLazyQueryHookResult = ReturnType<typeof useGetNewPublicTodosLazyQuery>;
+export type GetNewPublicTodosQueryResult = ApolloReactCommon.QueryResult<GetNewPublicTodosQuery, GetNewPublicTodosQueryVariables>;
+export const NotifyNewPublicTodosDocument = gql`
+    subscription notifyNewPublicTodos {
+  todos(where: {is_public: {_eq: true}}, limit: 1, order_by: {created_at: desc}) {
+    id
+    created_at
+  }
+}
+    `;
+export type NotifyNewPublicTodosProps<TChildProps = {}> = ApolloReactHoc.DataProps<NotifyNewPublicTodosSubscription, NotifyNewPublicTodosSubscriptionVariables> & TChildProps;
+export function withNotifyNewPublicTodos<TProps, TChildProps = {}>(operationOptions?: ApolloReactHoc.OperationOption<
+  TProps,
+  NotifyNewPublicTodosSubscription,
+  NotifyNewPublicTodosSubscriptionVariables,
+  NotifyNewPublicTodosProps<TChildProps>>) {
+    return ApolloReactHoc.withSubscription<TProps, NotifyNewPublicTodosSubscription, NotifyNewPublicTodosSubscriptionVariables, NotifyNewPublicTodosProps<TChildProps>>(NotifyNewPublicTodosDocument, {
+      alias: 'notifyNewPublicTodos',
+      ...operationOptions
+    });
+};
+
+/**
+ * __useNotifyNewPublicTodosSubscription__
+ *
+ * To run a query within a React component, call `useNotifyNewPublicTodosSubscription` and pass it any options that fit your needs.
+ * When your component renders, `useNotifyNewPublicTodosSubscription` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the subscription, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useNotifyNewPublicTodosSubscription({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useNotifyNewPublicTodosSubscription(baseOptions?: ApolloReactHooks.SubscriptionHookOptions<NotifyNewPublicTodosSubscription, NotifyNewPublicTodosSubscriptionVariables>) {
+        return ApolloReactHooks.useSubscription<NotifyNewPublicTodosSubscription, NotifyNewPublicTodosSubscriptionVariables>(NotifyNewPublicTodosDocument, baseOptions);
+      }
+export type NotifyNewPublicTodosSubscriptionHookResult = ReturnType<typeof useNotifyNewPublicTodosSubscription>;
+export type NotifyNewPublicTodosSubscriptionResult = ApolloReactCommon.SubscriptionResult<NotifyNewPublicTodosSubscription>;
